@@ -1,24 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import SearchBox from "./component/searchBox/searchCoinBox";
+import useFetchCoinInfo from "./hooks/useFetchCoinInfo";
+import InfoDashboard from "./component/infoDashboard/infoDashboard";
 
 function App() {
+  const [coinId, setCoinId] = useState<string | undefined>();
+  const { data, error, loading } = useFetchCoinInfo(coinId);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className={"search-box"}>
+        <SearchBox
+          onSearch={(id: string) => setCoinId(id)}
+          disable={loading}
+        ></SearchBox>
+      </div>
+      <InfoDashboard data={data} loading={loading}></InfoDashboard>
     </div>
   );
 }

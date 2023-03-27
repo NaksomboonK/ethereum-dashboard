@@ -1,0 +1,22 @@
+.ant-select-selector {
+  background-color: #282c34 !important;
+  color: whitesmoke !important;
+}
+
+.ant-select-dropdown {
+  background-color: #282c34 !important;
+  .ant-select-item {
+    color: #92949c !important;
+    &:hover {
+      color: whitesmoke !important;
+    }
+  }
+}
+
+.ant-select {
+  color: whitesmoke !important;
+}
+
+.ant-select-selection-placeholder {
+  color: whitesmoke !important;
+}
